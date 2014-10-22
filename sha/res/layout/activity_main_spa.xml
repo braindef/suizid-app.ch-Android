@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dde4ec"
+    android:orientation="vertical" >
+
+    <!--  <fragment
+        android:id="@+id/fragment_place"
+        android:name="ch.marclandolt.sha.ui.activities.EmptyFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    -->
+    
+    <Button
+        android:id="@+id/buttonRun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="116dp"
+        android:text="Run Capitalize Service" />
+
+    <EditText
+        android:id="@+id/editTextInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textViewResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonRun"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+</LinearLayout>
