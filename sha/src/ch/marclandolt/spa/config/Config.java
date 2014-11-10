@@ -6,8 +6,8 @@ import ch.marclandolt.spa.ui.activities.MainActivity;
 
 public class Config {
 
-	public static String servername = "ns3.ignored.ch";
-	public static String serverBotJid = "server@ns3.ignored.ch";
+	public static String servername = "suizid-app.ch";
+	public static String serverBotJid = "server@suizid-app.ch";
 
 	public static String managementUser = "management";
 	public static String managementPassword = "password";
