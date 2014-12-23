@@ -138,18 +138,18 @@ public class MainActivity extends ActionBarActivity {
 						intent.setAction(XmppService.SEND_TO_ACTIVITY);
 						intent.putExtra(XmppService.OPEN_HELP, "true");
 						sendBroadcast(intent);
-
+						/*
 						Intent intent2 = new Intent();
 						intent2.setAction(XmppService.SEND_TO_SERVICE);
 						intent2.putExtra("MESSAGE_FROM_FRAGMENT_CHAT", "Disconnecting");
 						sendBroadcast(intent2);
-						
+						*/
 						if (Config.isHelpSeeker) {
 							Intent intent3 = new Intent();
 							intent3.setAction(XmppService.SEND_TO_SERVICE);
 							intent3.putExtra(XmppService.DISCONNECT, "true");
 							sendBroadcast(intent3);
-						}
+						} 
 						Config.supporter = null;
 						Config.helpSeeker = null;
 						Config.isHelpSeeker = false;
