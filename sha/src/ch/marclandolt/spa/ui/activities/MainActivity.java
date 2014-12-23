@@ -9,6 +9,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
@@ -54,6 +55,17 @@ public class MainActivity extends ActionBarActivity {
 		Intent textCapitalizeIntent = new Intent(XmppService.SEND_TO_SERVICE);
 		textCapitalizeIntent.putExtra(XmppService.SERVICE_INPUT, "test");
 		sendBroadcast(textCapitalizeIntent);
+		
+
+		SharedPreferences preferences = getApplicationContext().getSharedPreferences("suicideApp", Context.MODE_PRIVATE); 
+		
+		Config.username = preferences.getString("suicideApp-username", "username");
+		Config.password = preferences.getString("suicideApp-password", "password");
+		
+		Intent intent = new Intent(XmppService.SEND_TO_SERVICE);		
+		intent.putExtra(XmppService.CONNECT,"connect");
+		intent.putExtra(XmppService.OFFER_HELP, "true");
+		getApplicationContext().sendBroadcast(intent);
 
 	}
 

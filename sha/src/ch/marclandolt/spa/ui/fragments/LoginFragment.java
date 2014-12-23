@@ -14,6 +14,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -44,9 +45,15 @@ public class LoginFragment extends Fragment implements OnClickListener,
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+		Context context = getActivity().getApplicationContext();
+		
+		SharedPreferences preferences = context.getSharedPreferences("suicideApp", Context.MODE_PRIVATE);  
+		
 		loginName = (EditText) view.findViewById(R.id.login_name);
+		loginName.setText(preferences.getString("suicideApp-username", "username"));
 
 		password = (EditText) view.findViewById(R.id.password);
+		password.setText(preferences.getString("suicideApp-password", "password"));
 		password.setOnKeyListener(this);
 
 		loginButton = (Button) view.findViewById(R.id.login_button);
@@ -105,6 +112,14 @@ public class LoginFragment extends Fragment implements OnClickListener,
 		Config.supporter = null;
 		Config.helpSeeker = null;
 
+		Context context = getActivity().getApplicationContext();
+		
+		SharedPreferences preferences = context.getSharedPreferences("suicideApp", Context.MODE_PRIVATE);  
+		SharedPreferences.Editor editor = preferences.edit();
+		editor.putString("suicideApp-username", username);
+		editor.putString("suicideApp-password", password);
+		editor.commit();
+		
 		Intent intent = new Intent(XmppService.SEND_TO_SERVICE);		
 		intent.putExtra(XmppService.CONNECT,"connect");
 		intent.putExtra(XmppService.OFFER_HELP, "true");
