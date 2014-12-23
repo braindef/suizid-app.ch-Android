@@ -32,6 +32,7 @@ import ch.marclandolt.spa.ui.fragments.ConfigFragment;
 import ch.marclandolt.spa.ui.fragments.HelpFragment;
 import ch.marclandolt.spa.ui.fragments.LoginFragment;
 import ch.marclandolt.spa.ui.fragments.SearchFragment;
+import ch.marclandolt.spa.ui.fragments.LoginFragment.MyLoggedInReciever;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -57,16 +58,29 @@ public class MainActivity extends ActionBarActivity {
 		sendBroadcast(textCapitalizeIntent);
 		
 
+		IntentFilter filter = new IntentFilter(XmppService.SEND_TO_ACTIVITY);
+		MyLoggedInReciever receiver = new MyLoggedInReciever();
+		this.registerReceiver(receiver, filter);
+
 		SharedPreferences preferences = getApplicationContext().getSharedPreferences("suicideApp", Context.MODE_PRIVATE); 
 		
 		Config.username = preferences.getString("suicideApp-username", "username");
 		Config.password = preferences.getString("suicideApp-password", "password");
 		
+		Toast.makeText(getApplicationContext(), Config.username, 2000).show();
+		//new LoginFragment().login(Config.username, Config.password);
+
+		Config.isSupporter = true;
+		Config.isHelpSeeker = false;
+		Config.supporter = null;
+		Config.helpSeeker = null;
+
+		
 		Intent intent = new Intent(XmppService.SEND_TO_SERVICE);		
 		intent.putExtra(XmppService.CONNECT,"connect");
 		intent.putExtra(XmppService.OFFER_HELP, "true");
-		getApplicationContext().sendBroadcast(intent);
-
+		this.sendBroadcast(intent);
+		
 	}
 
 	/**
@@ -252,4 +266,24 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+
+public class MyLoggedInReciever extends BroadcastReceiver {
+
+	@Override
+	public void onReceive(Context context, Intent intent) {
+
+		if (intent.hasExtra(XmppService.LOGGED_IN)) {
+			Log.d(TAG, "Received Loggedin");
+
+			FragmentTransaction ft = getFragmentManager()
+					.beginTransaction();
+			ft.replace(R.id.fragment_place, new HelpFragment());
+			ft.commit();
+			//getActivity().moveTaskToBack(true);
+
+
+		}
+	}
+}
 }
