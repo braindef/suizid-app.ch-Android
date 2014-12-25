@@ -71,16 +71,18 @@ public class MainActivity extends ActionBarActivity {
 		Toast.makeText(getApplicationContext(), Config.username, 2000).show();
 		//new LoginFragment().login(Config.username, Config.password);
 
-		Config.isSupporter = true;
+		if(!Config.username.equalsIgnoreCase("username"))
+		{
+			Config.isSupporter = true;
+			ft = getFragmentManager().beginTransaction();
+			ft.replace(R.id.fragment_place, new LoginFragment());
+			ft.commit();
+		}
 		Config.isHelpSeeker = false;
 		Config.supporter = null;
 		Config.helpSeeker = null;
 
 		
-		Intent intent = new Intent(XmppService.SEND_TO_SERVICE);		
-		intent.putExtra(XmppService.CONNECT,"connect");
-		intent.putExtra(XmppService.OFFER_HELP, "true");
-		this.sendBroadcast(intent);
 		
 	}
 
@@ -183,6 +185,11 @@ public class MainActivity extends ActionBarActivity {
 							intent.setAction(XmppService.SEND_TO_ACTIVITY);
 							intent.putExtra(XmppService.OPEN_HELP, "true");
 							sendBroadcast(intent);
+							
+							Config.supporter = null;
+							Config.helpSeeker = null;
+							Config.isHelpSeeker = false;
+							Config.inSession = false;
 						}
 
 

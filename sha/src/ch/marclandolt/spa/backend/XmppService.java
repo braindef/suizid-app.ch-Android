@@ -224,7 +224,7 @@ public class XmppService extends Service {
 			r.stop();
 
 			// set the supporter to unavailable
-			Config.free = false;
+			
 			
 			timeout.cancel();
 			timeout.purge();
@@ -280,7 +280,7 @@ public class XmppService extends Service {
 			e.printStackTrace();
 		}
 
-		Config.free = true;
+		Config.inSession = false;
 		
 		Intent intent = new Intent();
 		intent.setAction(XmppService.SEND_TO_ACTIVITY);
@@ -336,7 +336,7 @@ public class XmppService extends Service {
 		Config.supporter = null;
 		Config.helpSeeker = null;
 		Config.isHelpSeeker = false;
-		Config.free = true;
+		Config.inSession = false;
 	}
 	
 	@Override

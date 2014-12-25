@@ -28,7 +28,7 @@ public class Config {
 	public static boolean Available = true;						//also used when in chat session with a help seeking person
 	
 	protected static boolean isConnected = false;
-	public static boolean free = true;
+	public static boolean inSession = false;
 	public static boolean ringing = false;
 
 }

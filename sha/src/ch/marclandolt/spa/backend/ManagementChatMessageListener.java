@@ -65,8 +65,8 @@ public class ManagementChatMessageListener implements MessageListener {
 		if (message.getBody().toString()
 				.contains("SuicidePreventionAppServerSupporterRequestCalling;")) {
 
-			if (Config.Available && Config.free) {
-				Config.free=false;
+			if (Config.Available && !Config.inSession) {
+				Config.inSession=true;
 				Log.d(TAG, "selected helpSeeker: "
 						+ message.getBody().toString().split(";")[1]);
 				Config.helpSeeker = message.getBody().toString().split(";")[1];
