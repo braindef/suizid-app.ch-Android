@@ -185,10 +185,7 @@ public class MainActivity extends ActionBarActivity {
 							sendBroadcast(intent);
 						}
 
-						Config.supporter = null;
-						Config.helpSeeker = null;
-						Config.isHelpSeeker = false;
-						Config.free = true;
+
 					}
 				});
 		alertDialogBuilder.setNegativeButton(R.string.negative_button,

@@ -1,5 +1,8 @@
 package ch.marclandolt.spa.backend;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.jivesoftware.smack.ChatManager;
 import org.jivesoftware.smack.SmackException.NotConnectedException;
 import org.jivesoftware.smack.XMPPException;
@@ -56,6 +59,8 @@ public class XmppService extends Service {
 	public final static String SEND_TO_SERVICE = "ch.marclandolt.spa.backend.SEND_TO_SERVICE";
 
 	SmackAsyncTask smackAsyncTask = null;
+	
+	Timer timeout=null;
 
 	Ringtone r;
 
@@ -192,6 +197,14 @@ public class XmppService extends Service {
 		sendBroadcast(intent);
 
 		Log.d(TAG, "bringing activty to front");
+		
+		timeout = new Timer();
+		timeout.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				onSupporterDecline();
+			}
+		}, 45000);
 
 	}
 
@@ -212,6 +225,10 @@ public class XmppService extends Service {
 
 			// set the supporter to unavailable
 			Config.free = false;
+			
+			timeout.cancel();
+			timeout.purge();
+			timeout=null;
 
 		}
 
@@ -246,7 +263,7 @@ public class XmppService extends Service {
 	// if supporter declines the call in the dialog box, the app sands an
 	// decline message to the sleek-xmpp server bot, the bot should search the
 	// next supporter
-	public void onSupporterDecline() {
+	public TimerTask onSupporterDecline() {
 		// Log.d(TAG, Config.helpSeeker);
 
 		r.stop();
@@ -264,11 +281,17 @@ public class XmppService extends Service {
 		}
 
 		Config.free = true;
-
+		
 		Intent intent = new Intent();
 		intent.setAction(XmppService.SEND_TO_ACTIVITY);
 		intent.putExtra(XmppService.OPEN_HELP, "true");
 		sendBroadcast(intent);
+		
+		timeout.cancel();
+		timeout.purge();
+		timeout=null;
+		
+		return null;
 	}
 
 	public void onRescued()
@@ -291,7 +314,7 @@ public class XmppService extends Service {
 		try {
 			smackAsyncTask.managementChat
 					.sendMessage("SuicidePreventionAppServerHelpSeekerEndSession;"
-							+ points + Config.supporter);
+							+ points + ";" + Config.supporter);
 		} catch (NotConnectedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -309,6 +332,11 @@ public class XmppService extends Service {
 		intent.setAction(XmppService.SEND_TO_ACTIVITY);
 		intent.putExtra(XmppService.OPEN_HELP, "true");
 		sendBroadcast(intent);
+		
+		Config.supporter = null;
+		Config.helpSeeker = null;
+		Config.isHelpSeeker = false;
+		Config.free = true;
 	}
 	
 	@Override
