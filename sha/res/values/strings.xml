@@ -20,6 +20,8 @@
     <string name="logindata">You can get a Login from our Website, if you login the App registers itselve in your phone and calls you if there is anybody that needs help</string>
     <string name="please_enter_logindata">Please provide your Login and Password</string>
     <string name="end_chat_message">Really end chat and go to main screen?</string>
+    <string name="EvaluateSupporter">Evaluate Supporter</string>
+    <string name="please_rate">Please rate the supporter</string>
 
     
 </resources>

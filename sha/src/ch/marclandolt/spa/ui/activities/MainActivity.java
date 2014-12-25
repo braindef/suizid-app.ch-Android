@@ -29,6 +29,7 @@ import ch.marclandolt.spa.config.Config;
 import ch.marclandolt.spa.ui.fragments.CallFragment;
 import ch.marclandolt.spa.ui.fragments.ChatFragment;
 import ch.marclandolt.spa.ui.fragments.ConfigFragment;
+import ch.marclandolt.spa.ui.fragments.EvaluateFragment;
 import ch.marclandolt.spa.ui.fragments.HelpFragment;
 import ch.marclandolt.spa.ui.fragments.LoginFragment;
 import ch.marclandolt.spa.ui.fragments.SearchFragment;
@@ -144,6 +145,15 @@ public class MainActivity extends ActionBarActivity {
 				ft.replace(R.id.fragment_place, new LoginFragment());
 				ft.commit();
 			}
+			if (intent.hasExtra(XmppService.OPEN_EVALUATE)) {
+				String resultText = intent
+						.getStringExtra(XmppService.OPEN_EVALUATE);
+				FragmentTransaction ft = getFragmentManager()
+						.beginTransaction();
+				ft.replace(R.id.fragment_place, new EvaluateFragment());
+				ft.commit();
+			}
+			
 		}
 	};
 
@@ -160,22 +170,21 @@ public class MainActivity extends ActionBarActivity {
 
 					@Override
 					public void onClick(DialogInterface arg0, int arg1) {
-						Intent intent = new Intent();
-						intent.setAction(XmppService.SEND_TO_ACTIVITY);
-						intent.putExtra(XmppService.OPEN_HELP, "true");
-						sendBroadcast(intent);
-						/*
-						Intent intent2 = new Intent();
-						intent2.setAction(XmppService.SEND_TO_SERVICE);
-						intent2.putExtra("MESSAGE_FROM_FRAGMENT_CHAT", "Disconnecting");
-						sendBroadcast(intent2);
-						*/
-						if (Config.isHelpSeeker) {
-							Intent intent3 = new Intent();
-							intent3.setAction(XmppService.SEND_TO_SERVICE);
-							intent3.putExtra(XmppService.DISCONNECT, "true");
-							sendBroadcast(intent3);
-						} 
+						if (Config.isHelpSeeker)
+						{
+							Intent intent = new Intent();
+							intent.setAction(XmppService.SEND_TO_ACTIVITY);
+							intent.putExtra(XmppService.OPEN_EVALUATE, "true");
+							sendBroadcast(intent);
+						}
+						else
+						{
+							Intent intent = new Intent();
+							intent.setAction(XmppService.SEND_TO_ACTIVITY);
+							intent.putExtra(XmppService.OPEN_HELP, "true");
+							sendBroadcast(intent);
+						}
+
 						Config.supporter = null;
 						Config.helpSeeker = null;
 						Config.isHelpSeeker = false;

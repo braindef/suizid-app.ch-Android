@@ -1089,7 +1089,7 @@ containing a value of this type.
         public static final int TextView02=0x7f050050;
         public static final int abuse=0x7f050047;
         public static final int accept=0x7f050045;
-        public static final int action_available=0x7f050067;
+        public static final int action_available=0x7f05006a;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1098,12 +1098,12 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f050023;
         public static final int action_bar_title=0x7f050022;
         public static final int action_context_bar=0x7f05001d;
-        public static final int action_exit=0x7f05006b;
+        public static final int action_exit=0x7f05006e;
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050068;
-        public static final int action_transfer=0x7f050069;
+        public static final int action_settings=0x7f05006b;
+        public static final int action_transfer=0x7f05006c;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1122,12 +1122,13 @@ containing a value of this type.
         public static final int editTextInput=0x7f05003f;
         public static final int edit_query=0x7f050031;
         public static final int end=0x7f050013;
-        public static final int end_chat=0x7f05006a;
+        public static final int end_chat=0x7f05006d;
         public static final int error=0x7f050054;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002d;
         public static final int fragment_place=0x7f05003d;
         public static final int github=0x7f050055;
+        public static final int helped=0x7f05005a;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002b;
@@ -1137,20 +1138,22 @@ containing a value of this type.
         public static final int imageButton1=0x7f050044;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f05002a;
-        public static final int login_button=0x7f05005e;
-        public static final int login_message=0x7f050060;
-        public static final int login_name=0x7f05005a;
+        public static final int login_button=0x7f050062;
+        public static final int login_message=0x7f050063;
+        public static final int login_name=0x7f05005f;
+        public static final int madeworse=0x7f05005c;
         public static final int middle=0x7f050012;
-        public static final int needHelp=0x7f050057;
+        public static final int needHelp=0x7f05005d;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int password=0x7f05005c;
-        public static final int progressBar1=0x7f050065;
+        public static final int password=0x7f050061;
+        public static final int progressBar1=0x7f050068;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f050030;
         public static final int relativeLayout2=0x7f050042;
+        public static final int rescued=0x7f050058;
         public static final int search_badge=0x7f050033;
         public static final int search_bar=0x7f050032;
         public static final int search_button=0x7f050034;
@@ -1168,13 +1171,13 @@ containing a value of this type.
         public static final int showTitle=0x7f050006;
         public static final int split_action_bar=0x7f05001e;
         public static final int submit_area=0x7f05003a;
-        public static final int supporter_login=0x7f050066;
+        public static final int supporter_login=0x7f050069;
         public static final int tabMode=0x7f050002;
         public static final int testbutton=0x7f050052;
         public static final int textView1=0x7f05004e;
-        public static final int textView2=0x7f050059;
-        public static final int textView3=0x7f05005b;
-        public static final int textView4=0x7f050062;
+        public static final int textView2=0x7f05005e;
+        public static final int textView3=0x7f050060;
+        public static final int textView4=0x7f050065;
         public static final int textViewResult=0x7f050040;
         public static final int title=0x7f05002c;
         public static final int title_call=0x7f050043;
@@ -1184,12 +1187,12 @@ containing a value of this type.
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int view01=0x7f05004a;
-        public static final int view1=0x7f050058;
-        public static final int view2=0x7f05005d;
-        public static final int view3=0x7f05005f;
-        public static final int view4=0x7f050061;
-        public static final int view5=0x7f050063;
-        public static final int website=0x7f050064;
+        public static final int view1=0x7f050057;
+        public static final int view2=0x7f050059;
+        public static final int view3=0x7f05005b;
+        public static final int view4=0x7f050064;
+        public static final int view5=0x7f050066;
+        public static final int website=0x7f050067;
         public static final int withText=0x7f05000c;
     }
     public static final class integer {
@@ -1249,15 +1252,17 @@ containing a value of this type.
         public static final int fragment_config=0x7f03001c;
         public static final int fragment_empty=0x7f03001d;
         public static final int fragment_error=0x7f03001e;
-        public static final int fragment_help=0x7f03001f;
-        public static final int fragment_login=0x7f030020;
-        public static final int fragment_search=0x7f030021;
-        public static final int support_simple_spinner_dropdown_item=0x7f030022;
+        public static final int fragment_evaluate=0x7f03001f;
+        public static final int fragment_help=0x7f030020;
+        public static final int fragment_login=0x7f030021;
+        public static final int fragment_search=0x7f030022;
+        public static final int support_simple_spinner_dropdown_item=0x7f030023;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
     }
     public static final class string {
+        public static final int EvaluateSupporter=0x7f0a0020;
         public static final int Need_Help=0x7f0a0018;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
@@ -1309,6 +1314,7 @@ containing a value of this type.
         public static final int logindata=0x7f0a001d;
         public static final int negative_button=0x7f0a0016;
         public static final int please_enter_logindata=0x7f0a001e;
+        public static final int please_rate=0x7f0a0021;
         public static final int please_wait=0x7f0a001b;
         public static final int positive_button=0x7f0a0015;
         public static final int searching_supporter=0x7f0a001a;

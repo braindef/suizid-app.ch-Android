@@ -40,9 +40,14 @@ public class XmppService extends Service {
 	public static final String OPEN_HELP = "OPEN_HELP";
 	public static final String OPEN_LOGIN = "OPEN_LOGIN";
 	public static final String OPEN_SEARCH = "OPEN_SEARCH";
+	public static final String OPEN_EVALUATE = "OPEN_EVALUATE";
 
 	public static final String ACCEPT = "ACCEPT";
 	public static final String DECLINE = "DECLINE";
+	
+	public static final String RESCUED = "RESCUED";
+	public static final String HELPED = "HELPED";
+	public static final String MADEWORSE = "MADEWORSE";
 
 	public static final String MESSAGE_FROM_FRAGMENT_CHAT = "MESSAGE_FROM_FRAGMENT_CHAT";
 	public static final String MESSAGE_TO_FRAGMENT_CHAT = "MESSAGE_TO_FRAGMENT_CHAT";
@@ -144,6 +149,18 @@ public class XmppService extends Service {
 
 			if (intent.hasExtra(DECLINE)) {
 				onSupporterDecline();
+			}
+			
+			if (intent.hasExtra(RESCUED)) {
+				onRescued();
+			}
+			
+			if (intent.hasExtra(HELPED)) {
+				onHelped();
+			}
+			
+			if (intent.hasExtra(MADEWORSE)) {
+				onMadeWorse();
 			}
 		}
 	};
@@ -254,6 +271,46 @@ public class XmppService extends Service {
 		sendBroadcast(intent);
 	}
 
+	public void onRescued()
+	{
+		endEvaluate("rescued");
+	}
+	
+	public void onHelped()
+	{
+		endEvaluate("helped");
+	}
+	
+	public void onMadeWorse()
+	{
+		endEvaluate("madeworse");
+	}
+	
+	public void endEvaluate(String points)
+	{
+		try {
+			smackAsyncTask.managementChat
+					.sendMessage("SuicidePreventionAppServerHelpSeekerEndSession;"
+							+ points + Config.supporter);
+		} catch (NotConnectedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XMPPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Intent intent3 = new Intent();
+		intent3.setAction(XmppService.SEND_TO_SERVICE);
+		intent3.putExtra(XmppService.DISCONNECT, "true");
+		sendBroadcast(intent3);
+		
+		Intent intent = new Intent();
+		intent.setAction(XmppService.SEND_TO_ACTIVITY);
+		intent.putExtra(XmppService.OPEN_HELP, "true");
+		sendBroadcast(intent);
+	}
+	
 	@Override
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
