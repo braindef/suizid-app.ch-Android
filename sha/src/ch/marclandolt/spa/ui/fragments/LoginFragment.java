@@ -83,7 +83,7 @@ public class LoginFragment extends Fragment implements OnClickListener,
 			break;
 		case R.id.website:
 			Intent browserIntent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("http://ns3.ignored.ch"));
+					Uri.parse("http://www.suizid-app.ch"));
 			startActivity(browserIntent);
 			break;
 		}

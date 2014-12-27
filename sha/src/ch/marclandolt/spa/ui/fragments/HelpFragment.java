@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import ch.marclandolt.spa.R;
 import ch.marclandolt.spa.backend.XmppService;
+import ch.marclandolt.spa.config.Config;
 
 public class HelpFragment extends Fragment {
 	@Override
@@ -64,6 +65,8 @@ public void orderHelp()
 	intent.putExtra(XmppService.NEED_HELP, "help");
 	getActivity().sendBroadcast(intent);
 
+	Config.inSession=true;
+	
 	FragmentTransaction ft = getFragmentManager()
 			.beginTransaction();
 	ft.replace(R.id.fragment_place, new SearchFragment());

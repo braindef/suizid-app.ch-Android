@@ -47,7 +47,7 @@ public class SmackAsyncTask extends AsyncTask<Void, Void, Void> implements
 		conConfig
 				.setSecurityMode(ConnectionConfiguration.SecurityMode.disabled);
 
-		login(Config.username, Config.password, Config.serverBotJid);
+		login(Config.username.split("@")[0], Config.password, Config.serverBotJid);
 
 		return null;
 	}

@@ -1311,12 +1311,15 @@ containing a value of this type.
         public static final int exit=0x7f0a000f;
         public static final int getting_help=0x7f0a0017;
         public static final int github=0x7f0a0013;
+        public static final int helped=0x7f0a0023;
         public static final int logindata=0x7f0a001d;
+        public static final int made_worse=0x7f0a0024;
         public static final int negative_button=0x7f0a0016;
         public static final int please_enter_logindata=0x7f0a001e;
         public static final int please_rate=0x7f0a0021;
         public static final int please_wait=0x7f0a001b;
         public static final int positive_button=0x7f0a0015;
+        public static final int saved_live=0x7f0a0022;
         public static final int searching_supporter=0x7f0a001a;
         public static final int spa=0x7f0a000d;
         public static final int supporter_login=0x7f0a0012;
